@@ -1,0 +1,61 @@
+<div class="container mt-4 text-center">
+  <div class="card">
+    <div class="card-header">
+      <h2>New post</h2>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <label for="title"><h3>Title</h3></label>
+          <input
+            id="title"
+            type="text"
+            class="form-control"
+            [formControl]="title"
+          />
+        </div>
+        <div class="form-group mt-3">
+          <label for="category"><h3>Category</h3></label>
+          <select class="form-control" id="category" [formControl]="category">
+            <option value="1">Location</option>
+            <option value="2">Vente</option>
+            <option value="3">Don</option>
+          </select>
+        </div>
+        <div class="form-group mt-3">
+          <label for="description"><h3>Description</h3></label>
+          <textarea
+            class="form-control"
+            type="text"
+            id="description"
+            rows="3"
+            [formControl]="description"
+          ></textarea>
+        </div>
+        <div class="form-group mt-3">
+          <label for="image"><h3>Image</h3></label>
+          <br>
+          <input
+            type="file"
+            class="form-control-file rounded-end"
+            id="image"
+            [formControl]="image"
+          />
+        </div>
+        <div class="form-group mt-3">
+          <label for="price"><h3>Price</h3></label>
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            placeholder="Price"
+            [formControl]="price"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary mt-4" (click)="submit()">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

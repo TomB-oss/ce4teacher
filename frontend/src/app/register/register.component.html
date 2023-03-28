@@ -1,15 +1,46 @@
-<div>
-    <h1>CE4TEACHER</h1>
+<div class="container-fluid bg-dark text-white p-4 text-center">
+  <h1>CE4TEACHER</h1>
 </div>
-<div>
-    <h2>Register</h2>
-    <h3>Name</h3>
-    <input>
-    <h3>Email</h3>
-    <input>
-    <h3>Password</h3>
-    <input>
-    <button>Register</button>
-    <p>If you are already register</p>
-    <button routerLink="/login">Log in</button>
+<div class="container mt-4 text-center">
+  <div class="card">
+    <div class="card-header">
+      <h2>Register</h2>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <label for="name"><h3>Name</h3></label>
+          <input
+            id="name"
+            type="text"
+            class="form-control"
+            [formControl]="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email"><h3>Email</h3></label>
+          <input
+            id="email"
+            type="text"
+            class="form-control"
+            [formControl]="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password"><h3>Password</h3></label>
+          <input
+            id="password"
+            type="password"
+            class="form-control"
+            [formControl]="password"
+          />
+        </div>
+        <button type="button" class="btn btn-primary mt-4" (click)="register()">
+          Register
+        </button>
+      </form>
+      <p class="mt-4">If you are not registered yet</p>
+      <a routerLink="/login" class="btn btn-secondary mt-4">Log in</a>
+    </div>
+  </div>
 </div>
