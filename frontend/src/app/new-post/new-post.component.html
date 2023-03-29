@@ -1,56 +1,89 @@
-<div class="container mt-4 text-center">
+<div class="container mt-4 text-center w-75">
   <div class="card">
     <div class="card-header">
-      <h2>New post</h2>
+      <h3>New post</h3>
     </div>
     <div class="card-body">
       <form>
         <div class="form-group">
-          <label for="title"><h3>Title</h3></label>
-          <input
-            id="title"
-            type="text"
-            class="form-control"
-            [formControl]="title"
-          />
+          <label for="title">Title</label>
+          <div class="d-flex justify-content-md-center">
+            <input
+              id="title"
+              type="text"
+              class="form-control w-25"
+              [formControl]="title"
+              [ngClass]="{ 'is-invalid': titleValue.trim() === '' }"
+              [(ngModel)]="titleValue"
+            />
+          </div>
         </div>
         <div class="form-group mt-3">
-          <label for="category"><h3>Category</h3></label>
-          <select class="form-control" id="category" [formControl]="category">
-            <option value="1">Location</option>
-            <option value="2">Vente</option>
-            <option value="3">Don</option>
-          </select>
+          <label for="category">Category</label>
+          <div class="d-flex justify-content-md-center">
+            <select
+              class="form-control w-25"
+              id="category"
+              [formControl]="category"
+              [ngClass]="{ 'is-invalid': categoryValue.trim() === '' }"
+              [(ngModel)]="categoryValue"
+            >
+              <option value="Location">Location</option>
+              <option value="Vente">Vente</option>
+              <option value="Don">Don</option>
+            </select>
+          </div>
         </div>
         <div class="form-group mt-3">
-          <label for="description"><h3>Description</h3></label>
-          <textarea
-            class="form-control"
-            type="text"
-            id="description"
-            rows="3"
-            [formControl]="description"
-          ></textarea>
+          <label for="description">Description</label>
+          <div class="d-flex justify-content-md-center">
+            <textarea
+              class="form-control w-75"
+              type="text"
+              id="description"
+              rows="3"
+              [formControl]="description"
+              [ngClass]="{ 'is-invalid': descriptionValue.trim() === '' }"
+              [(ngModel)]="descriptionValue"
+            ></textarea>
+          </div>
         </div>
         <div class="form-group mt-3">
-          <label for="image"><h3>Image</h3></label>
-          <br>
-          <input
-            type="file"
-            class="form-control-file rounded-end"
-            id="image"
-            [formControl]="image"
-          />
+          <label for="Location">Location</label>
+          <div class="d-flex justify-content-md-center">
+            <input
+              id="Location"
+              type="text"
+              class="form-control w-50"
+              [formControl]="location"
+              [ngClass]="{ 'is-invalid': locationValue.trim() === '' }"
+              [(ngModel)]="locationValue"
+            />
+          </div>
         </div>
         <div class="form-group mt-3">
-          <label for="price"><h3>Price</h3></label>
-          <input
-            type="number"
-            class="form-control"
-            id="price"
-            placeholder="Price"
-            [formControl]="price"
-          />
+          <label for="image">Image</label>
+          <br />
+          <div class="input-group mb-3">
+            <input
+              type="file"
+              class="form-control w-50"
+              id="image"
+              [formControl]="image"
+            />
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label for="price">Price</label>
+          <div class="d-flex justify-content-md-center">
+            <input
+              type="number"
+              class="form-control w-25"
+              id="price"
+              placeholder="Price"
+              [formControl]="price"
+            />
+          </div>
         </div>
         <button type="submit" class="btn btn-primary mt-4" (click)="submit()">
           Submit

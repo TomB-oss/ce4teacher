@@ -24,7 +24,10 @@ export class RegisterComponent {
       })
       .subscribe(
         (res) => {
+          let obj: any;
           console.log(res);
+          obj = res;
+          localStorage.setItem('email', obj.email);
           this.router.navigate(['/home']);
         },
 

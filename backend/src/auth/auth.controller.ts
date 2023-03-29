@@ -15,4 +15,9 @@ export class AuthController {
   register(@Body() dto: AuthDto) {
     return this.authService.register(dto);
   }
+
+  @Post('change-password')
+  changePassword(@Body() { email, oldPassword, newPassword }) {
+    return this.authService.changePassword({ email, oldPassword, newPassword });
+  }
 }

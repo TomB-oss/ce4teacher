@@ -24,6 +24,7 @@ export class NewPostService {
           authorId: user.id,
           description: dto.description,
           category: dto.category,
+          location: dto.location,
           image: dto.image,
           price: dto.price,
         },

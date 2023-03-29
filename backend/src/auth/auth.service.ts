@@ -38,6 +38,29 @@ export class AuthService {
         }
         throw error;
       });
-    return { message: 'Register successful' };
+    return { message: 'Register successful', email: dto.email };
+  }
+
+  async changePassword({ email, oldPassword, newPassword }) {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+    });
+    if (!user) {
+      throw new ForbiddenException('Credentials incorrect');
+    }
+    if (user.password !== oldPassword) {
+      throw new ForbiddenException('Credentials incorrect');
+    }
+    await this.prisma.user.update({
+      where: {
+        email: email,
+      },
+      data: {
+        password: newPassword,
+      },
+    });
+    return { message: 'Password changed successfully' };
   }
 }

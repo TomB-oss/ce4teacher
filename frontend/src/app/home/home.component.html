@@ -1,0 +1,22 @@
+<div *ngIf="allPosts.length == 0">
+  <p class="fs-5 text-center mt-5">
+    No posts yet, be the first to post something!
+  </p>
+</div>
+<ul class="d-flex flex-wrap">
+  <li *ngFor="let post of allPosts" class="me-4 mt-3" style="list-style: none">
+    <div class="card h-100">
+      <div *ngIf="post.image != null && post.image != ''; else elseBlock">
+        <img src="{{ post.image }}" class="card-img-top" alt="..." />
+      </div>
+      <ng-template #elseBlock>
+        <img src="../../assets/ap1.jpeg" class="card-img-top" alt="..." />
+      </ng-template>
+      <div class="card-body">
+        <p class="fw-lighter fs-6">{{ post.category }}</p>
+        <p class="fs-3 fw-bold">{{ post.title }}</p>
+        <p class="card-text fs-6 fst-italic">{{ post.description }}</p>
+      </div>
+    </div>
+  </li>
+</ul>

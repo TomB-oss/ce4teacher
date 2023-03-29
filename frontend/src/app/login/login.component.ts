@@ -12,6 +12,7 @@ export class LoginComponent {
   email = new FormControl('');
   password = new FormControl('');
   showNavbar = true;
+  showError = false;
 
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -30,6 +31,10 @@ export class LoginComponent {
           this.router.navigate(['/home']);
         },
         (err) => {
+          this.showError = true;
+          setTimeout(() => {
+            this.showError = false;
+          }, 10000);
           console.log(err);
         }
       );

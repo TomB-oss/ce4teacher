@@ -13,6 +13,10 @@ export class PostDto {
   @IsString()
   description: string;
 
+  @IsNotEmpty()
+  @IsString()
+  location: string;
+
   category: string;
   image: string;
   price: number;

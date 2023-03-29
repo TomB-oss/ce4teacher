@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<div class="container">
+  <h2>Change your password</h2>
+  <h3>Enter your old password</h3>
+  <div class="form-group">
+    <input
+      type="password"
+      class="form-control"
+      [formControl]="oldPassword"
+      placeholder="Old password"
+    />
+  </div>
+  <h3>Enter your new password</h3>
+  <div class="form-group">
+    <input
+      type="password"
+      class="form-control"
+      [formControl]="newPassword"
+      placeholder="New password"
+    />
+  </div>
+  <p *ngIf="showParagraph" class="mt-3">{{ message }}</p>
+  <button class="btn btn-primary mt-3" (click)="changePassword()">
+    Change password
+  </button>
+</div>
