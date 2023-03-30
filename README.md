@@ -7,9 +7,9 @@ docker compose up
 ```
 
 ```bash
-cd frontend; npm install; npm run start:dev
+cd frontend ; npm install ; npm run start:dev
 ```
 
 ```bash
-cd backend; npm install; npm run start:dev
+cd backend ; npm install ; npm run start:dev
 ```
