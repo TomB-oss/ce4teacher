@@ -1,19 +1,22 @@
-name: Run Docker Compose
+name: Build and run Docker Compose
+
 on:
   push:
     branches:
       - main
 
 jobs:
-  docker-compose:
+  build-and-run:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Install Docker
-      run: |
-        sudo apt-get update
-        sudo apt-get -y install docker-compose
-    - name: Build and run containers
-      run: |
-        docker-compose up
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build and run containers
+        run: |
+          docker-compose up --build -d
+          docker-compose ps
+      - name: Wait for containers to start and become healthy
+        run: |
+          docker-compose ps -q | xargs docker inspect --format '{{.State.Health.Status}}' | grep -q healthy
+      - name: Stop containers
+        run: docker-compose down
