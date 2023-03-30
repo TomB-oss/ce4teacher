@@ -14,6 +14,7 @@ import { NewPostComponent } from './new-post/new-post.component';
 import { MapComponent } from './map/map.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { LikedPostsComponent } from './liked-posts/liked-posts.component';
+import { SeePostsComponent } from './see-posts/see-posts.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { LikedPostsComponent } from './liked-posts/liked-posts.component';
     MapComponent,
     MyPostsComponent,
     LikedPostsComponent,
+    SeePostsComponent,
   ],
   imports: [
     BrowserModule,

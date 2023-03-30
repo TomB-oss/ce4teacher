@@ -1,10 +1,13 @@
-<div *ngIf="myPosts.length == 0">
-  <p class="fs-5 text-center mt-5">
-    No posts yet, try to post something!
-  </p>
+<div *ngIf="myPosts?.length == 0">
+  <p class="fs-5 text-center mt-5">No posts yet, try to post something!</p>
 </div>
-<ul class="d-flex flex-wrap">
-  <li *ngFor="let post of myPosts" class="me-4 mt-3" style="list-style: none">
+
+<ul class="d-flex flex-row flex-wrap mb-3">
+  <li
+    *ngFor="let post of myPosts"
+    class="col-md-4 col-lg-3 me-3 mt-4"
+    style="list-style: none"
+  >
     <div class="card h-100">
       <div *ngIf="post.image != null && post.image != ''; else elseBlock">
         <img src="{{ post.image }}" class="card-img-top" alt="..." />
@@ -17,6 +20,7 @@
         <p class="fs-3 fw-bold">{{ post.title }}</p>
         <p class="card-text fs-6 fst-italic">{{ post.description }}</p>
       </div>
+      <br />
     </div>
   </li>
 </ul>

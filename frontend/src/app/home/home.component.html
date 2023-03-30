@@ -1,11 +1,16 @@
-<div *ngIf="allPosts.length == 0">
+<div *ngIf="allPosts?.length == 0">
   <p class="fs-5 text-center mt-5">
     No posts yet, be the first to post something!
   </p>
 </div>
-<ul class="d-flex flex-wrap">
-  <li *ngFor="let post of allPosts" class="me-4 mt-3" style="list-style: none">
-    <div class="card h-100">
+
+<ul class="d-flex flex-row flex-wrap mb-3">
+  <li
+    *ngFor="let post of allPosts"
+    class="col-md-4 col-lg-3 me-3 mt-4 card-class"
+    style="list-style: none"
+  >
+    <div class="card h-100" (click)="clickPost(post)">
       <div *ngIf="post.image != null && post.image != ''; else elseBlock">
         <img src="{{ post.image }}" class="card-img-top" alt="..." />
       </div>
@@ -16,6 +21,10 @@
         <p class="fw-lighter fs-6">{{ post.category }}</p>
         <p class="fs-3 fw-bold">{{ post.title }}</p>
         <p class="card-text fs-6 fst-italic">{{ post.description }}</p>
+      </div>
+      <br />
+      <div class="position-absolute bottom-0 end-0 m-3">
+        <i class="far fa-heart" (click)="toggleHeart($event.target)"></i>
       </div>
     </div>
   </li>

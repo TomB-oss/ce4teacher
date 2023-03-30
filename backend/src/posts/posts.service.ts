@@ -5,8 +5,20 @@ import { PrismaService } from '../prisma/prisma.service';
 @Injectable()
 export class PostsService {
   constructor(private prisma: PrismaService, private config: ConfigService) {}
-  async getPosts() {
-    const posts = await this.prisma.post.findMany();
+
+  async getPosts({ email }) {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+    const posts = await this.prisma.post.findMany({
+      where: {
+        authorId: {
+          not: user.id,
+        },
+      },
+    });
     return posts;
   }
 

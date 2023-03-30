@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-center mt-3 ms-3">
+  <i class="fa fa-arrow-left arrowClass" aria-hidden="true" (click)="backHome()"></i>
+  <ul class="d-flex flex-row flex-wrap me-3 mt-3">
+    <div class="card">
+      <div
+        *ngIf="postData.image != null && postData.image != ''; else elseBlock"
+      >
+        <img src="{{ postData.image }}" class="card-img-top" alt="..." />
+      </div>
+      <ng-template #elseBlock>
+        <img src="../../assets/ap1.jpeg" class="card-img-top" alt="..." />
+      </ng-template>
+      <div class="card-body">
+        <p class="fw-lighter fs-6">{{ postData.category }}</p>
+        <p class="fs-3 fw-bold">{{ postData.title }}</p>
+        <p class="card-text fs-6 fst-italic">{{ postData.description }}</p>
+      </div>
+      <br />
+      <div class="position-absolute bottom-0 end-0 m-3">
+        <i class="far fa-heart" (click)="toggleHeart($event.target)"></i>
+      </div>
+    </div>
+  </ul>
+</div>

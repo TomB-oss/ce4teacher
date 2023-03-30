@@ -17,14 +17,28 @@ export class HomeComponent {
   }
 
   getPosts() {
-    this.http.get('http://localhost:3001/posts').subscribe(
-      (res) => {
-        console.log(res);
-        this.allPosts = res;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.http
+      .post('http://localhost:3001/posts', {
+        email: localStorage.getItem('email'),
+      })
+      .subscribe(
+        (res) => {
+          console.log(res);
+          this.allPosts = res;
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
+  toggleHeart(icon: any) {
+    icon.classList.toggle('far');
+    icon.classList.toggle('fas');
+  }
+
+  clickPost(post: any) {
+    localStorage.setItem('post', JSON.stringify(post));
+    this.router.navigate(['/see-posts']);
   }
 }

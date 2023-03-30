@@ -9,6 +9,7 @@ import { MapComponent } from './map/map.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
+import { SeePostsComponent } from './see-posts/see-posts.component';
 
 const routes: Routes = [
   { path: '', redirectTo: "/login", pathMatch: "full" },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'new-post', component: NewPostComponent },
   { path: 'my-posts', component: MyPostsComponent },
+  { path: 'see-posts', component: SeePostsComponent },
   { path: '**', redirectTo: 'error' },
 ];
 

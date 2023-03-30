@@ -16,6 +16,15 @@ model User {
   password String
   name     String?
   posts    Post[]
+  likes    Like[]
+}
+
+model Like {
+  id     Int    @id @default(autoincrement())
+  user   User   @relation(fields: [userId], references: [id])
+  userId Int
+  post   Post   @relation(fields: [postId], references: [id])
+  postId Int
 }
 
 model Post {
@@ -27,6 +36,7 @@ model Post {
   price       Int?
   location    String?
   published   Boolean @default(false)
+  likedBy     Like[]
   author      User    @relation(fields: [authorId], references: [id])
   authorId    Int
 }

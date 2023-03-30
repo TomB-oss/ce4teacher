@@ -17,15 +17,6 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            [routerLink]="['/profile']"
-            [routerLinkActive]="['active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >Profile</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
             [routerLink]="['/new-post']"
             [routerLinkActive]="['active']"
             [routerLinkActiveOptions]="{ exact: true }"
@@ -49,9 +40,13 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Posts
+            About me
           </a>
           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="profile">Profile</a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
             <li><a class="dropdown-item" href="my-posts">My posts</a></li>
             <li><a class="dropdown-item" href="liked-posts">Liked posts</a></li>
           </ul>
