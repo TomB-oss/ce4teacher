@@ -10,10 +10,12 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   title = 'frontend';
   allPosts: any;
+  likedPosts: any;
   constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit() {
     this.getPosts();
+    this.getLikedPost();
   }
 
   getPosts() {
@@ -32,9 +34,41 @@ export class HomeComponent {
       );
   }
 
-  toggleHeart(icon: any) {
+  async getLikedPost() {
+    await this.http
+      .post('http://localhost:3001/posts/liked-posts', {
+        email: localStorage.getItem('email'),
+      })
+      .subscribe(
+        (res) => {
+          console.log(res);
+          this.likedPosts = res;
+          if (this.likedPosts != null) {
+            this.likedPosts.forEach((post: any) => {
+              console.log(post.id);
+            });
+          }
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
+  toggleHeart(icon: any, event: any, post: any) {
+    event.stopPropagation();
+
     icon.classList.toggle('far');
     icon.classList.toggle('fas');
+
+    this.http
+      .post('http://localhost:3001/posts/like', {
+        email: localStorage.getItem('email'),
+        postId: post.id,
+      })
+      .subscribe((res) => {
+        console.log('liked: ', res);
+      });
   }
 
   clickPost(post: any) {

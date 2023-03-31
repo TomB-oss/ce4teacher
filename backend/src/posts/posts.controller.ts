@@ -14,4 +14,14 @@ export class PostsController {
   getMyPosts(@Body() { email }) {
     return this.authService.getMyPosts({ email });
   }
+
+  @Post('like')
+  likePost(@Body() { email, postId }) {
+    return this.authService.likePost({ email, postId });
+  }
+
+  @Post('liked-posts')
+  getLikedPost(@Body() { email }) {
+    return this.authService.getLikedPost({ email });
+  }
 }

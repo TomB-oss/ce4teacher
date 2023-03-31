@@ -23,8 +23,25 @@
         <p class="card-text fs-6 fst-italic">{{ post.description }}</p>
       </div>
       <br />
-      <div class="position-absolute bottom-0 end-0 m-3">
-        <i class="far fa-heart" (click)="toggleHeart($event.target)"></i>
+      <div
+        class="position-absolute bottom-0 end-0 m-3 heart-class"
+        *ngFor="let like of likedPosts"
+      >
+        <div *ngIf="like.id == post.id">
+          <i
+            class="fas fa-heart"
+            (click)="toggleHeart($event.target, $event, post)"
+          ></i>
+        </div>
+      </div>
+      <div
+        *ngIf="likedPosts == null || likedPosts"
+        class="position-absolute bottom-0 end-0 m-3 heart-class"
+      >
+        <i
+          class="far fa-heart"
+          (click)="toggleHeart($event.target, $event, post)"
+        ></i>
       </div>
     </div>
   </li>
