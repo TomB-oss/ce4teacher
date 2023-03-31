@@ -15,7 +15,7 @@ export class HomeComponent {
 
   ngOnInit() {
     this.getPosts();
-    this.getLikedPost();
+    // this.getLikedPost();
   }
 
   getPosts() {

@@ -20,7 +20,7 @@ export class MapComponent {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
         'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
-      maxZoom: 3,
+      maxZoom: 18,
     }).addTo(this.map);
 
     this.getPostLocation();
